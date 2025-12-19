@@ -1,3 +1,15 @@
 #!/bin/bash
+# Script untuk Node 1 (192.168.0.11)
 
-python3 ./kv.py --id 1 --tcp 8001 --udp 8101 --peers 127.0.0.1:8002=2,127.0.0.1:8003=3 --logger-addr 127.0.0.1:9000 --numnodes 3 --use-mutex 0
+# Ganti jadi 1 nanti untuk mengaktifkan Mutex
+USE_MUTEX=0
+
+echo "=== Menjalankan Node 1 (Tanpa Mutex) ==="
+python3 ../program/kv.py \
+  --id 1 \
+  --tcp 8000 \
+  --udp 8100 \
+  --peers 192.168.0.12:8000=2,192.168.0.13:8000=3 \
+  --logger-addr 192.168.0.10:9000 \
+  --numnodes 3 \
+  --use-mutex $USE_MUTEX
